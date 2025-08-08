@@ -1,0 +1,19 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: ecommerce-luv2shop
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: 'https://github.com/montabellakhal2027/ecommerce-luv2shop-angular-springboot'
+    targetRevision: HEAD
+    path: k8s
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: default
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+
